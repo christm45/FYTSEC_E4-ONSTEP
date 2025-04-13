@@ -4,6 +4,7 @@
     "builds": [
       {
         "chipFamily": "ESP32",
+          "improv": false,
         "parts": [
           { "path": "boot_app0.bin", "offset": 57344 },
           { "path": "SerialHelloWorld.ino.bin", "offset": 65536 },
