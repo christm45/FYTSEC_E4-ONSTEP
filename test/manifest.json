@@ -1,5 +1,5 @@
 {
-  "name": "WebToolTest",
+  "name": "test",
   "builds": [
     {
       "chipFamily": "ESP32",
