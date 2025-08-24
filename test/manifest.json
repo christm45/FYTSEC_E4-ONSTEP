@@ -1,5 +1,5 @@
 {
-  "name": "ESPHome",
+  "name": "FYTSEC_E4-ONSTEP",
   "builds": [
     {
       "chipFamily": "ESP32",
