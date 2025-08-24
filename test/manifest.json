@@ -1,5 +1,6 @@
 {
   "name": "FYTSEC_E4-ONSTEP",
+  "version": "10.24.c",
   "builds": [
     {
       "chipFamily": "ESP32",
