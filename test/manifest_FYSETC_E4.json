@@ -1,0 +1,10 @@
+{
+  "name": "FYSETC E4",
+  "version": "10.24.c",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "/OnStep-Web-Tools/firmware/FYSETC_E4.bin", "offset": 0 }]
+    }
+  ]
+}
