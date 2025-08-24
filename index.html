@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OnStep SWS Installer</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark light" />
+    <style>
+      body {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Ubuntu, sans-serif;
+        padding: 0;
+        margin: 0;
+        line-height: 1.4;
+      }
+      .content {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 12px;
+      }
+      h2 {
+        margin-top: 2em;
+      }
+      h3 {
+        margin-top: 1.5em;
+      }
+      a {
+        color: #03a9f4;
+      }
+      .invisible {
+        visibility: hidden;
+      }
+      .hidden {
+        display: none;
+      }
+      esp-web-install-button[install-unsupported] {
+        visibility: inherit;
+      }
+      .content pre {
+        max-width: 100%;
+        overflow-y: scroll;
+      }
+      .footer {
+        margin-top: 24px;
+        border-top: 1px solid #ccc;
+        padding-top: 24px;
+        text-align: center;
+      }
+      .footer .initiative {
+        font-style: italic;
+        margin-top: 16px;
+      }
+      table {
+        border-spacing: 0;
+      }
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+      }
+      .radios, .radios_sws, .radios_shc, .radios_shc2, .radios_fysetc, .radios_gda li {
+        list-style: none;
+        line-height: 2em;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #333;
+          color: #fff;
+        }
+        a {
+          color: #58a6ff;
+        }
+      }
+    </style>
+    <script type="module" src="js/install-button.js?module"></script>
+
+    <script type="text/javascript" src="jquery-3.7.0.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      $('.radios').hide(); 
+      $('.radios_sws').hide();
+      $('.radios_shc').hide();
+      $('.radios_shc2').hide();
+      $('.radios_fysetc').hide();
+      $('.radios_gda').hide();
+      
+      $('#type').change(function(){
+
+          $("input[type=radio][name=type]").prop('checked', false);
+          $("#ConnectButton").addClass("invisible")
+
+          if($('#type').val() == 'SWS') {
+              $('.radios_sws').show();
+          } else {
+              $('.radios_sws').hide(); 
+          } 
+          if($('#type').val() == 'SHC') {
+              $('.radios_shc').show(); 
+          } else {
+              $('.radios_shc').hide();
+          } 
+          if($('#type').val() == 'SHC2+') {
+              $('.radios_shc2').show(); 
+          } else {
+              $('.radios_shc2').hide(); 
+          } 
+          if($('#type').val() == 'FYSETC E4') {
+              $('.radios_fysetc').show(); 
+          } else {
+              $('.radios_fysetc').hide(); 
+          } 
+          if($('#type').val() == 'GDA Images') {
+              $('.radios_gda').show(); 
+          } else {
+              $('.radios_gda').hide(); 
+          } 
+
+      });
+    });
+    </script>
+
+  </head>
+  <body>
+    <div class="content">
+      <h1>OnStep ESP32 and ESP8266 Installer</h1>
+      <p>This is a prototype installer.  Other methods to install and more project information are at this URL <a href="https://onstep.groups.io/g/main/wiki/">https://onstep.groups.io/g/main/wiki/</a>.</p>
+      <ol>
+        <li>First choose the project</li>
+        <li>Choose the version you want to load on your ESP MCU</li>
+        <li>Then use the CONNECT button to connect to your ESP via USB Serial</li>
+        <li>**Most ESP32s you need to hold the boot button to flash the firmware**</li>
+      </ol>
+      <select id="type">
+        <option>PROJECT</option>
+        <option>SWS</option>
+        <option>SHC</option>
+        <option>SHC2+</option>
+        <option>FYSETC E4</option>
+        <option>GDA Images</option>
+      </select>
+      <ul class="radios_sws">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="sws_wifi_2.06.h" /> SWS WiFi (2.06.h Both ESP32 and ESP8266)</label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" id="radios" value="sws_wifi_2.06.j" /> SWS WiFi (2.06.j Both ESP32 and ESP8266)</label>
+        </li>
+      </ul>
+      <ul class="radios_shc">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC_ST4_1.3" /> SHC ST4 1.3" Screen (ESP32)</label>
+        </li>
+      </ul>
+      <ul class="radios_shc2">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="SHC2+_ST4_1.5_Screen_with_BME_4.01.b" /> SHC2+ ST4 1.5" Screen BME (4.01.b ESP32)</label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" id="radios" value="SHC2+_ST4_1.5_Screen_4.01.b" /> SHC2+ ST4 1.5" Screen (4.01.b ESP32)</label>
+        </li>
+         <li>
+          <label><input type="radio" name="type" id="radios" value="SHC2+_WIFI_1.5_Screen_With_BME_4.01.b" /> SHC2+ WiFi 1.5" Screen BME (4.01.b ESP32)</label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" id="radios" value="SHC2+_WIFI_1.5_Screen_4.01.b" /> SHC2+ WiFi 1.5" Screen (4.01.b ESP32)</label>
+        </li>
+      </ul>
+      <ul class="radios_fysetc">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="FYSETC_E4_10.18.c.6" /> FYSETC E4 10.18.c.6</label>
+        </li>
+      </ul>
+
+      <ul class="radios_gda">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="GDA_MaxESP4_OnStepX_10.16.b.5" /> MaxESP4 OnStepX 10.16.b.5</label>
+        </li>
+      </ul>
+
+      <p class="button-row" align="center">
+        <esp-web-install-button class="invisible" id="ConnectButton"></esp-web-install-button>
+      </p>
+
+      <div class="footer">
+        Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
+    </div>
+    <script>
+      document.querySelectorAll('input[name="type"]').forEach(radio =>
+        radio.addEventListener("change", () => {
+          const button = document.querySelector('esp-web-install-button');
+          button.manifest = `./manifest/manifest_${radio.value}.json`;
+          button.classList.remove('invisible');
+        }
+      ));
+    </script>
+  </body>
+</html>
